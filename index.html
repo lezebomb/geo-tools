@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GEO Tools Array | Developer Utility Hub</title>
+  <meta name="description" content="A static array of privacy-first client-side developer and commerce utility tools." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#10b981" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+            mono: ["JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", "monospace"]
+          },
+          boxShadow: {
+            glow: "0 0 60px rgba(16, 185, 129, 0.18)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(16, 185, 129, 0.18), transparent 28%),
+        radial-gradient(circle at 84% 8%, rgba(56, 189, 248, 0.16), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #09090b 48%, #052e2b 100%);
+    }
+    .matrix-grid {
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
+    }
+    .tool-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(100, 116, 139, 0.55);
+      background: rgba(2, 6, 23, 0.68);
+      backdrop-filter: blur(18px);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+    .tool-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 36%, rgba(16, 185, 129, 0.12));
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(45, 212, 191, 0.7);
+      background: rgba(15, 23, 42, 0.76);
+      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35), 0 0 44px rgba(16, 185, 129, 0.12);
+    }
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+    .status-dot {
+      box-shadow: 0 0 24px currentColor;
+    }
+  </style>
+</head>
+<body class="min-h-full text-slate-100 antialiased">
+  <div class="matrix-grid pointer-events-none fixed inset-0 opacity-80"></div>
+
+  <main class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-8 sm:px-6 lg:px-8">
+    <header class="flex flex-col gap-8 pb-10 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-3 rounded-full border border-emerald-300/25 bg-emerald-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-100">
+          <span class="status-dot h-2 w-2 rounded-full bg-emerald-300 text-emerald-300"></span>
+          Static GEO Utility Array
+        </div>
+        <h1 class="mt-6 text-4xl font-black leading-tight text-white sm:text-6xl">
+          Developer / Utility Hub
+        </h1>
+        <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+          Five privacy-first, pure client-side web utilities consolidated into a single static deployment surface. No backend, no database, no runtime maintenance.
+        </p>
+      </div>
+
+      <section class="w-full max-w-sm rounded-xl border border-slate-700/70 bg-slate-950/70 p-5 shadow-glow">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <span class="text-sm font-semibold text-slate-300">Deployment Mode</span>
+          <span class="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-bold text-cyan-100">Cloudflare Ready</span>
+        </div>
+        <dl class="mt-4 grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <dt class="text-slate-500">Tools</dt>
+            <dd class="mt-1 text-2xl font-black text-white">5</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500">Runtime</dt>
+            <dd class="mt-1 text-2xl font-black text-white">0</dd>
+          </div>
+          <div class="col-span-2">
+            <dt class="text-slate-500">Path Strategy</dt>
+            <dd class="mt-1 font-mono text-xs text-emerald-200">./tool-folder/index.html</dd>
+          </div>
+        </dl>
+      </section>
+    </header>
+
+    <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <a class="tool-card block p-6" href="./cron-expression-interactive-visualizer-and-explainer/index.html">
+        <div class="relative">
+          <div class="flex items-start justify-between gap-4">
+            <span class="rounded-lg border border-indigo-300/30 bg-indigo-400/10 px-3 py-2 font-mono text-xs font-bold text-indigo-100">CRON</span>
+            <span class="font-mono text-xs text-slate-500">01</span>
+          </div>
+          <h2 class="mt-6 text-2xl font-black text-white">Cron Expression Visualizer</h2>
+          <p class="mt-3 min-h-[72px] text-sm leading-6 text-slate-300">Explain five-field cron expressions and preview upcoming run times directly in the browser.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+            <span class="font-mono text-xs text-slate-500">cron-expression-interactive-visualizer-and-explainer</span>
+            <span class="text-sm font-bold text-emerald-200">Open</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tool-card block p-6" href="./cross-border-e-commerce-stamp-duty-profit-margin-calculator/index.html">
+        <div class="relative">
+          <div class="flex items-start justify-between gap-4">
+            <span class="rounded-lg border border-emerald-300/30 bg-emerald-400/10 px-3 py-2 font-mono text-xs font-bold text-emerald-100">MARGIN</span>
+            <span class="font-mono text-xs text-slate-500">02</span>
+          </div>
+          <h2 class="mt-6 text-2xl font-black text-white">Cross-Border Profit Calculator</h2>
+          <p class="mt-3 min-h-[72px] text-sm leading-6 text-slate-300">Estimate duties, platform fees, ad spend, net profit, margin, and break-even ROAS.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+            <span class="font-mono text-xs text-slate-500">cross-border-e-commerce-stamp-duty-profit-margin-calculator</span>
+            <span class="text-sm font-bold text-emerald-200">Open</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tool-card block p-6" href="./css-glassmorphism-ui-code-generator-with-live-canvas/index.html">
+        <div class="relative">
+          <div class="flex items-start justify-between gap-4">
+            <span class="rounded-lg border border-sky-300/30 bg-sky-400/10 px-3 py-2 font-mono text-xs font-bold text-sky-100">CSS</span>
+            <span class="font-mono text-xs text-slate-500">03</span>
+          </div>
+          <h2 class="mt-6 text-2xl font-black text-white">Glassmorphism Generator</h2>
+          <p class="mt-3 min-h-[72px] text-sm leading-6 text-slate-300">Tune blur, tint, opacity, border, and radius with a live canvas and copy-ready CSS output.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+            <span class="font-mono text-xs text-slate-500">css-glassmorphism-ui-code-generator-with-live-canvas</span>
+            <span class="text-sm font-bold text-emerald-200">Open</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tool-card block p-6" href="./pure-client-side-jwt-json-web-token-security-debugger/index.html">
+        <div class="relative">
+          <div class="flex items-start justify-between gap-4">
+            <span class="rounded-lg border border-rose-300/30 bg-rose-400/10 px-3 py-2 font-mono text-xs font-bold text-rose-100">JWT</span>
+            <span class="font-mono text-xs text-slate-500">04</span>
+          </div>
+          <h2 class="mt-6 text-2xl font-black text-white">JWT Security Debugger</h2>
+          <p class="mt-3 min-h-[72px] text-sm leading-6 text-slate-300">Decode JSON Web Token headers and payloads locally, with expiry and security claim warnings.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+            <span class="font-mono text-xs text-slate-500">pure-client-side-jwt-json-web-token-security-debugger</span>
+            <span class="text-sm font-bold text-emerald-200">Open</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tool-card block p-6 md:col-span-2 xl:col-span-1" href="./tiktok-xiaohongshu-character-and-hashtag-counter-with-copy-wizar/index.html">
+        <div class="relative">
+          <div class="flex items-start justify-between gap-4">
+            <span class="rounded-lg border border-fuchsia-300/30 bg-fuchsia-400/10 px-3 py-2 font-mono text-xs font-bold text-fuchsia-100">SOCIAL</span>
+            <span class="font-mono text-xs text-slate-500">05</span>
+          </div>
+          <h2 class="mt-6 text-2xl font-black text-white">Character and Hashtag Counter</h2>
+          <p class="mt-3 min-h-[72px] text-sm leading-6 text-slate-300">Count social copy length, extract hashtags, and prepare cleaner platform-ready drafts locally.</p>
+          <div class="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+            <span class="font-mono text-xs text-slate-500">tiktok-xiaohongshu-character-and-hashtag-counter-with-copy-wizar</span>
+            <span class="text-sm font-bold text-emerald-200">Open</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <footer class="mt-auto pt-12 text-center text-xs text-slate-500">
+      <p>Static hub generated for Cloudflare Pages. Every linked tool runs entirely in the browser.</p>
+    </footer>
+  </main>
+</body>
+</html>

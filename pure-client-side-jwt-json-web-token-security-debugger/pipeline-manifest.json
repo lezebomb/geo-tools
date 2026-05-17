@@ -1,0 +1,43 @@
+{
+  "keyword": "Pure Client-Side JWT (JSON Web Token) Security Debugger",
+  "slug": "pure-client-side-jwt-json-web-token-security-debugger",
+  "name": "Pure Client-Side JWT Security Debugger",
+  "url": "https://pure-client-side-jwt-json-web-token-security-debugger.yourmaindomain.top/",
+  "tool_type": "jwt_debugger",
+  "category": "developer_transformer",
+  "theme": "stone-rose",
+  "layout": "split-rail",
+  "created_at": "2026-05-17T08:37:34+00:00",
+  "score": {
+    "keyword": "Pure Client-Side JWT (JSON Web Token) Security Debugger",
+    "slug": "pure-client-side-jwt-json-web-token-security-debugger",
+    "category": "developer_transformer",
+    "tool_type": "jwt_debugger",
+    "financial_score": 22,
+    "intent_score": 18,
+    "feasibility_score": 36,
+    "compliance_score": 24,
+    "total_score": 100,
+    "selected": true,
+    "rationale": [
+      "命中高价值类别：developer_transformer",
+      "匹配工具类型：jwt_debugger",
+      "关键词包含明确的任务型动词或工具名词",
+      "可用原生浏览器 API / ES6 在本地完成",
+      "达到生成阈值，可进入纯前端站点生产"
+    ]
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "adsense": {
+    "client": "ca-pub-xxxxxxxxxxxxxxxx",
+    "slots": {
+      "top": "0000000001",
+      "side": "0000000002",
+      "bottom": "0000000003"
+    }
+  }
+}

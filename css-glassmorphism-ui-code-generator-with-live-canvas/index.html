@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Glassmorphism Code Generator | Free Client-Side Utility</title>
+  <meta name="description" content="Design glass panels with a live canvas, tune blur, opacity, radius, borders, and copy production-ready CSS." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://css-glassmorphism-ui-code-generator-with-live-canvas.yourmaindomain.top/" />
+  <meta property="og:title" content="CSS Glassmorphism Code Generator" />
+  <meta property="og:description" content="Design glass panels with a live canvas, tune blur, opacity, radius, borders, and copy production-ready CSS." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://css-glassmorphism-ui-code-generator-with-live-canvas.yourmaindomain.top/" />
+  <meta name="theme-color" content="#fb7185" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+            mono: ["JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", "monospace"]
+          },
+          colors: {
+            brand: "#fb7185"
+          }
+        }
+      }
+    };
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "CSS Glassmorphism Code Generator",
+      "url": "https://css-glassmorphism-ui-code-generator-with-live-canvas.yourmaindomain.top/",
+      "description": "Design glass panels with a live canvas, tune blur, opacity, radius, borders, and copy production-ready CSS.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "featureList": [
+        "100% browser-side execution",
+        "No account required",
+        "Local input processing",
+        "Copy-ready structured output"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Client-Side Utility Pipeline"
+      },
+      "datePublished": "2026-05-17T08:37:34+00:00",
+      "dateModified": "2026-05-17T08:37:34+00:00"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "CSS Glassmorphism Code Generator",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "url": "https://css-glassmorphism-ui-code-generator-with-live-canvas.yourmaindomain.top/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the CSS need JavaScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The generated glassmorphism style is plain CSS and can be copied into any front-end project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is CSS Glassmorphism Code Generator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CSS Glassmorphism Code Generator is a focused browser-based utility built for fast, private, task-oriented workflows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After the first load, the core JavaScript logic is self-contained. CDN styling and ads require network access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this tool private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All calculations run in your browser. The page does not upload your inputs to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the result commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The generated output is meant for everyday operational use, but you should verify critical legal, tax, and security decisions with a qualified professional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will backdrop-filter work everywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Modern browsers support it well, but you should keep a solid color fallback for older environments."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --accent: #fb7185;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100%;
+      background: #020617;
+    }
+    .field {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.74);
+      background: rgba(15, 23, 42, 0.72);
+      padding: 0.78rem 0.9rem;
+      color: rgb(241, 245, 249);
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    .field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+    .field-label {
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgb(226, 232, 240);
+    }
+    .slider {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .chip {
+      min-height: 42px;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(15, 23, 42, 0.62);
+      padding: 0.55rem 0.75rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+    }
+    .chip:hover {
+      border-color: var(--accent);
+      color: white;
+    }
+    .result-pre {
+      min-height: 160px;
+      overflow: auto;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(2, 6, 23, 0.72);
+      padding: 1rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .secondary-button {
+      min-height: 38px;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.72);
+      padding: 0.45rem 0.75rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+    .metric-card {
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(15, 23, 42, 0.62);
+      padding: 1rem;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgb(148, 163, 184);
+    }
+    .metric-value {
+      margin-top: 0.35rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: white;
+    }
+    .ad-slot {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.38);
+      padding: 0.75rem;
+    }
+    .ad-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgb(148, 163, 184);
+    }
+    .loading-orbit {
+      height: 56px;
+      width: 56px;
+      border-radius: 999px;
+      border: 3px solid rgba(148, 163, 184, 0.25);
+      border-top-color: var(--accent);
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .cdn-fallback .field,
+    .cdn-fallback .metric-card,
+    .cdn-fallback .result-pre {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    @media (max-width: 720px) {
+      .result-pre { min-height: 130px; }
+    }
+  </style>
+</head>
+<body class="min-h-full bg-gradient-to-br from-stone-950 via-neutral-950 to-rose-950 text-slate-100 antialiased" data-tool-type="glassmorphism_generator" data-ux-delay="0">
+  <div class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-8">
+    <header class="flex flex-col gap-5 pb-5 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Client-side utility / developer_transformer</p>
+        <h1 class="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">CSS Glassmorphism Code Generator</h1>
+        <p class="mt-3 max-w-2xl text-base leading-7 text-slate-300">Design glass panels with a live canvas, tune blur, opacity, radius, borders, and copy production-ready CSS.</p>
+      </div>
+      <div class="rounded-md border border-slate-700/70 bg-slate-950/60 px-4 py-3 text-sm text-slate-300">
+        <div class="font-semibold text-slate-100">Generated for</div>
+        <div class="mt-1 max-w-[280px] truncate">CSS Glassmorphism UI Code Generator with Live Canvas</div>
+      </div>
+    </header>
+
+    <section class="mb-5 rounded-md border border-emerald-300/35 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-50">
+      Data Privacy Guarantee: 100% Secure: All data processing is executed locally within your browser. Your data never leaves your device.
+    </section>
+
+    <div class="mb-6">
+      <section class="ad-slot min-h-[96px]" aria-label="Advertisement area top">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000001"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+    </div>
+
+    <main class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
+      <section class="rounded-md border bg-stone-950/72 border-stone-700/70 p-4 shadow-2xl shadow-black/20 sm:p-6">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h2 class="text-xl font-extrabold text-white">Workspace</h2>
+            <p class="mt-1 text-sm leading-6 text-slate-400">Enter your data, run the tool, and copy the result. The execution script is embedded in this page.</p>
+          </div>
+          <div class="rounded-md border bg-rose-400/10 border-rose-300/30 text-rose-100 px-3 py-2 text-xs font-semibold">
+            Pure browser execution
+          </div>
+        </div>
+
+        <div class="mt-6">
+
+          <div class="grid gap-5 lg:grid-cols-[320px_1fr]">
+            <div class="space-y-4">
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-200">Tint color</span>
+                <input id="colorInput" type="color" value="#38bdf8" class="h-12 w-full rounded-md border border-slate-700 bg-slate-950 p-1" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-200">Blur <b id="blurValue">18</b>px</span>
+                <input id="blurInput" type="range" min="0" max="40" value="18" class="slider" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-200">Opacity <b id="opacityValue">22</b>%</span>
+                <input id="opacityInput" type="range" min="5" max="70" value="22" class="slider" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-200">Radius <b id="radiusValue">18</b>px</span>
+                <input id="radiusInput" type="range" min="0" max="40" value="18" class="slider" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-200">Border <b id="borderValue">1</b>px</span>
+                <input id="borderInput" type="range" min="0" max="4" value="1" class="slider" />
+              </label>
+            </div>
+            <div id="glassPreviewWrap" class="relative min-h-[300px] overflow-hidden rounded-md border border-slate-700/70 bg-[radial-gradient(circle_at_20%_20%,#22d3ee55,transparent_26%),radial-gradient(circle_at_80%_30%,#f472b655,transparent_28%),linear-gradient(135deg,#020617,#111827)] p-8">
+              <div id="glassPreview" class="mx-auto flex min-h-[220px] max-w-md items-center justify-center p-8 text-center">
+                <div>
+                  <p class="text-sm uppercase tracking-[0.24em] text-white/70">Live Canvas</p>
+                  <p class="mt-3 text-3xl font-semibold text-white">Glass panel</p>
+                  <p class="mt-2 text-sm text-white/70">Tune values and copy production CSS.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button id="primaryAction" type="button" class="min-h-[48px] rounded-md bg-gradient-to-r from-rose-300 to-amber-200 text-stone-950 px-5 py-3 text-sm font-black shadow-lg shadow-black/20 transition hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-white/20">
+            Generate CSS
+          </button>
+          <button id="resetButton" type="button" class="secondary-button">Reset sample</button>
+          <p id="statusText" class="text-sm text-slate-400" role="status" aria-live="polite">Ready for local processing.</p>
+        </div>
+
+        <div id="loadingPanel" class="mt-5 hidden rounded-md border border-slate-700/70 bg-slate-950/70 p-5" aria-live="polite">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div class="loading-orbit" aria-hidden="true"></div>
+            <div>
+              <div class="font-bold text-white">Processing locally</div>
+              <p class="mt-1 text-sm leading-6 text-slate-400">The browser is computing the result. No input is uploaded or stored externally.</p>
+            </div>
+          </div>
+          <canvas id="loadingCanvasArt" class="mt-4 h-20 w-full rounded-md border border-slate-800 bg-slate-950/70" width="960" height="120" aria-hidden="true"></canvas>
+        </div>
+
+        <section class="mt-6 rounded-md border border-slate-700/70 bg-slate-950/55 p-4">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-extrabold text-white">Result</h2>
+              <p class="mt-1 text-sm text-slate-400">Structured output is ready to inspect and copy.</p>
+            </div>
+            <button id="copyResultButton" type="button" class="secondary-button">Copy result</button>
+          </div>
+          <div id="errorPanel" class="mt-4 hidden rounded-md border border-rose-400/40 bg-rose-500/10 p-3 text-sm text-rose-100"></div>
+          <div id="resultPanel" class="mt-4">
+
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Generated CSS</h3>
+            <button type="button" id="copyCssButton" class="secondary-button">Copy CSS</button>
+          </div>
+          <pre id="cssOutput" class="result-pre mt-3"></pre>
+        
+          </div>
+        </section>
+      </section>
+
+      <aside class="space-y-6">
+        <section class="rounded-md border bg-stone-950/72 border-stone-700/70 p-4">
+          <h2 class="text-base font-extrabold text-white">Tool Notes</h2>
+          <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+            <li>Runs with native ES6+ browser logic.</li>
+            <li>No account, no upload, no server-side storage.</li>
+            <li>Designed for fast intent completion and clear outputs.</li>
+          </ul>
+        </section>
+        <section class="ad-slot min-h-[280px]" aria-label="Advertisement area side">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000002"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+      </aside>
+    </main>
+
+    <section class="mt-6 grid gap-3 md:grid-cols-2">
+      <details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Does the CSS need JavaScript?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">No. The generated glassmorphism style is plain CSS and can be copied into any front-end project.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">What is CSS Glassmorphism Code Generator?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">CSS Glassmorphism Code Generator is a focused browser-based utility built for fast, private, task-oriented workflows.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Does it work offline?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">After the first load, the core JavaScript logic is self-contained. CDN styling and ads require network access.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Is this tool private?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Yes. All calculations run in your browser. The page does not upload your inputs to a server.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Can I use the result commercially?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Yes. The generated output is meant for everyday operational use, but you should verify critical legal, tax, and security decisions with a qualified professional.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Will backdrop-filter work everywhere?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Modern browsers support it well, but you should keep a solid color fallback for older environments.</p>
+            </details>
+    </section>
+
+    <div class="mt-6">
+      <section class="ad-slot min-h-[120px]" aria-label="Advertisement area bottom">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000003"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+    </div>
+
+    <footer class="py-8 text-center text-xs text-slate-500">
+      <span>CSS Glassmorphism Code Generator</span>
+      <span class="mx-2">·</span>
+      <span>Static single-page utility</span>
+      <span class="mx-2">·</span>
+      <span>Created 2026-05-17T08:37:34+00:00</span>
+    </footer>
+  </div>
+
+  <script id="tool-script" data-primary-script="true">
+  "use strict";
+  (function () {
+    const ADSENSE_CLIENT = "ca-pub-xxxxxxxxxxxxxxxx";
+    const PLACEHOLDER_ADS = ADSENSE_CLIENT.includes("xxxxxxxx");
+    const $ = (id) => document.getElementById(id);
+    const statusText = $("statusText");
+    const errorPanel = $("errorPanel");
+    const loadingPanel = $("loadingPanel");
+    const loadingCanvas = $("loadingCanvasArt");
+    const uxDelayMs = Number(document.body.dataset.uxDelay || "0");
+
+    window.addEventListener("error", function (event) {
+      const target = event.target;
+      if (target && target.tagName === "SCRIPT" && String(target.src || "").includes("cdn.tailwindcss.com")) {
+        document.documentElement.classList.add("cdn-fallback");
+        showError("Tailwind CDN did not load. The tool still works with fallback styles.");
+      }
+    }, true);
+
+    function showError(message) {
+      if (!errorPanel) return;
+      errorPanel.textContent = message;
+      errorPanel.classList.remove("hidden");
+    }
+
+    function clearError() {
+      if (!errorPanel) return;
+      errorPanel.textContent = "";
+      errorPanel.classList.add("hidden");
+    }
+
+    function setStatus(message) {
+      if (statusText) statusText.textContent = message;
+    }
+
+    function sleep(ms) {
+      return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    function drawLoadingCanvas() {
+      if (!loadingCanvas) return;
+      const ctx = loadingCanvas.getContext("2d");
+      if (!ctx) return;
+      const width = loadingCanvas.width;
+      const height = loadingCanvas.height;
+      const now = Date.now() / 800;
+      ctx.clearRect(0, 0, width, height);
+      const gradient = ctx.createLinearGradient(0, 0, width, 0);
+      gradient.addColorStop(0, "rgba(15,23,42,0.9)");
+      gradient.addColorStop(0.5, "rgba(30,41,59,0.95)");
+      gradient.addColorStop(1, "rgba(15,23,42,0.9)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+      for (let i = 0; i < 42; i += 1) {
+        const x = (i * 73 + now * 90) % width;
+        const y = 20 + Math.sin(i + now) * 24 + height / 2;
+        ctx.fillStyle = i % 3 === 0 ? "#fb7185" : "rgba(148,163,184,0.45)";
+        ctx.beginPath();
+        ctx.arc(x, y, 2 + (i % 5), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = "rgba(226,232,240,0.82)";
+      ctx.font = "600 18px ui-sans-serif, system-ui";
+      ctx.fillText("Local computation in progress", 24, 42);
+      ctx.font = "14px ui-sans-serif, system-ui";
+      ctx.fillStyle = "rgba(148,163,184,0.9)";
+      ctx.fillText("No network request is made with your input.", 24, 70);
+    }
+
+    async function runWithLoading(worker) {
+      clearError();
+      if (loadingPanel) loadingPanel.classList.remove("hidden");
+      setStatus("Processing locally...");
+      drawLoadingCanvas();
+      const started = performance.now();
+      try {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        const value = await worker();
+        const elapsed = performance.now() - started;
+        const remaining = Math.max(0, uxDelayMs - elapsed);
+        if (remaining > 0) await sleep(remaining);
+        setStatus("Done. Result generated locally.");
+        return value;
+      } catch (error) {
+        const message = error && error.message ? error.message : String(error);
+        showError(message);
+        setStatus("Please fix the input and try again.");
+        throw error;
+      } finally {
+        if (loadingPanel) loadingPanel.classList.add("hidden");
+      }
+    }
+
+    function initAds() {
+      if (PLACEHOLDER_ADS) return;
+      const ads = document.querySelectorAll("ins.adsbygoogle");
+      for (const ad of ads) {
+        if (ad.dataset.initialized === "true") continue;
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          ad.dataset.initialized = "true";
+        } catch (error) {
+          console.warn("AdSense initialization skipped:", error);
+        }
+      }
+    }
+
+    function metric(label, value, detail) {
+      return `<div class="metric-card"><div class="metric-label">${escapeHtml(label)}</div><div class="metric-value">${escapeHtml(value)}</div><div class="mt-2 text-sm leading-5 text-slate-400">${escapeHtml(detail || "")}</div></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      const temp = document.createElement("textarea");
+      temp.value = text;
+      temp.style.position = "fixed";
+      temp.style.left = "-9999px";
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      temp.remove();
+      return Promise.resolve();
+    }
+
+    function collectResultText() {
+      const panel = $("resultPanel");
+      return panel ? panel.innerText.trim() : "";
+    }
+
+    window.toolkit = {
+      $,
+      runWithLoading,
+      metric,
+      escapeHtml,
+      copyText,
+      collectResultText,
+      setStatus,
+      showError,
+      clearError
+    };
+
+
+    function setupTool() {
+      const { $, runWithLoading, copyText, setStatus } = window.toolkit;
+      function hexToRgb(hex) {
+        const raw = hex.replace("#", "");
+        return {
+          r: parseInt(raw.slice(0, 2), 16),
+          g: parseInt(raw.slice(2, 4), 16),
+          b: parseInt(raw.slice(4, 6), 16)
+        };
+      }
+      function buildCss() {
+        const color = $("colorInput").value;
+        const blur = Number($("blurInput").value);
+        const opacity = Number($("opacityInput").value);
+        const radius = Number($("radiusInput").value);
+        const border = Number($("borderInput").value);
+        const rgb = hexToRgb(color);
+        const alpha = Math.max(0.05, Math.min(0.7, opacity / 100));
+        return `.glass-panel {
+  background: rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha.toFixed(2)});
+  border: ${border}px solid rgba(255, 255, 255, 0.28);
+  border-radius: ${radius}px;
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(${blur}px);
+  -webkit-backdrop-filter: blur(${blur}px);
+}`;
+      }
+      function updatePreview() {
+        return runWithLoading(() => {
+          const blur = Number($("blurInput").value);
+          const opacity = Number($("opacityInput").value);
+          const radius = Number($("radiusInput").value);
+          const border = Number($("borderInput").value);
+          const color = $("colorInput").value;
+          $("blurValue").textContent = String(blur);
+          $("opacityValue").textContent = String(opacity);
+          $("radiusValue").textContent = String(radius);
+          $("borderValue").textContent = String(border);
+          const css = buildCss();
+          $("cssOutput").textContent = css;
+          const preview = $("glassPreview");
+          preview.style.cssText = css;
+          preview.style.color = "white";
+        });
+      }
+      ["colorInput", "blurInput", "opacityInput", "radiusInput", "borderInput"].forEach(id => {
+        $(id).addEventListener("input", () => {
+          setStatus("Values changed. Preview refresh queued.");
+          updatePreview();
+        });
+      });
+      $("copyCssButton").addEventListener("click", () => copyText($("cssOutput").textContent).then(() => setStatus("CSS copied.")));
+      $("primaryAction").addEventListener("click", updatePreview);
+      $("resetButton").addEventListener("click", () => {
+        $("colorInput").value = "#38bdf8";
+        $("blurInput").value = "18";
+        $("opacityInput").value = "22";
+        $("radiusInput").value = "18";
+        $("borderInput").value = "1";
+        updatePreview();
+      });
+      updatePreview();
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initAds();
+      if (typeof window.setupTool === "function") {
+        window.setupTool();
+      }
+      const copyButton = $("copyResultButton");
+      if (copyButton) {
+        copyButton.addEventListener("click", function () {
+          copyText(collectResultText()).then(() => setStatus("Result copied."));
+        });
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

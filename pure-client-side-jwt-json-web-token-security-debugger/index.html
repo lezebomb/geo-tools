@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pure Client-Side JWT Security Debugger | Free Client-Side Utility</title>
+  <meta name="description" content="Decode JSON Web Token headers and payloads locally, inspect expiry, algorithm choices, and common security warnings." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://pure-client-side-jwt-json-web-token-security-debugger.yourmaindomain.top/" />
+  <meta property="og:title" content="Pure Client-Side JWT Security Debugger" />
+  <meta property="og:description" content="Decode JSON Web Token headers and payloads locally, inspect expiry, algorithm choices, and common security warnings." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pure-client-side-jwt-json-web-token-security-debugger.yourmaindomain.top/" />
+  <meta name="theme-color" content="#fb7185" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+            mono: ["JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", "monospace"]
+          },
+          colors: {
+            brand: "#fb7185"
+          }
+        }
+      }
+    };
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Pure Client-Side JWT Security Debugger",
+      "url": "https://pure-client-side-jwt-json-web-token-security-debugger.yourmaindomain.top/",
+      "description": "Decode JSON Web Token headers and payloads locally, inspect expiry, algorithm choices, and common security warnings.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "featureList": [
+        "100% browser-side execution",
+        "No account required",
+        "Local input processing",
+        "Copy-ready structured output"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Client-Side Utility Pipeline"
+      },
+      "datePublished": "2026-05-17T08:37:34+00:00",
+      "dateModified": "2026-05-17T08:37:34+00:00"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pure Client-Side JWT Security Debugger",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "url": "https://pure-client-side-jwt-json-web-token-security-debugger.yourmaindomain.top/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is alg=none flagged?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unsigned tokens are dangerous in most production systems because they can bypass expected verification flows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Pure Client-Side JWT Security Debugger?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pure Client-Side JWT Security Debugger is a focused browser-based utility built for fast, private, task-oriented workflows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After the first load, the core JavaScript logic is self-contained. CDN styling and ads require network access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the result commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The generated output is meant for everyday operational use, but you should verify critical legal, tax, and security decisions with a qualified professional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this tool private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All calculations run in your browser. The page does not upload your inputs to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this verify a JWT signature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This client-side debugger decodes and inspects token claims. Signature verification requires the correct key material."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --accent: #fb7185;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100%;
+      background: #020617;
+    }
+    .field {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.74);
+      background: rgba(15, 23, 42, 0.72);
+      padding: 0.78rem 0.9rem;
+      color: rgb(241, 245, 249);
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    .field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+    .field-label {
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgb(226, 232, 240);
+    }
+    .slider {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .chip {
+      min-height: 42px;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(15, 23, 42, 0.62);
+      padding: 0.55rem 0.75rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+    }
+    .chip:hover {
+      border-color: var(--accent);
+      color: white;
+    }
+    .result-pre {
+      min-height: 160px;
+      overflow: auto;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(2, 6, 23, 0.72);
+      padding: 1rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .secondary-button {
+      min-height: 38px;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.72);
+      padding: 0.45rem 0.75rem;
+      color: rgb(226, 232, 240);
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+    .metric-card {
+      border-radius: 0.5rem;
+      border: 1px solid rgba(100, 116, 139, 0.7);
+      background: rgba(15, 23, 42, 0.62);
+      padding: 1rem;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgb(148, 163, 184);
+    }
+    .metric-value {
+      margin-top: 0.35rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: white;
+    }
+    .ad-slot {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.38);
+      padding: 0.75rem;
+    }
+    .ad-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgb(148, 163, 184);
+    }
+    .loading-orbit {
+      height: 56px;
+      width: 56px;
+      border-radius: 999px;
+      border: 3px solid rgba(148, 163, 184, 0.25);
+      border-top-color: var(--accent);
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .cdn-fallback .field,
+    .cdn-fallback .metric-card,
+    .cdn-fallback .result-pre {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    @media (max-width: 720px) {
+      .result-pre { min-height: 130px; }
+    }
+  </style>
+</head>
+<body class="min-h-full bg-gradient-to-br from-stone-950 via-neutral-950 to-rose-950 text-slate-100 antialiased" data-tool-type="jwt_debugger" data-ux-delay="0">
+  <div class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-8">
+    <header class="flex flex-col gap-5 pb-5 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Client-side utility / developer_transformer</p>
+        <h1 class="mt-3 text-3xl font-black leading-tight text-white sm:text-4xl">Pure Client-Side JWT Security Debugger</h1>
+        <p class="mt-3 max-w-2xl text-base leading-7 text-slate-300">Decode JSON Web Token headers and payloads locally, inspect expiry, algorithm choices, and common security warnings.</p>
+      </div>
+      <div class="rounded-md border border-slate-700/70 bg-slate-950/60 px-4 py-3 text-sm text-slate-300">
+        <div class="font-semibold text-slate-100">Generated for</div>
+        <div class="mt-1 max-w-[280px] truncate">Pure Client-Side JWT (JSON Web Token) Security Debugger</div>
+      </div>
+    </header>
+
+    <section class="mb-5 rounded-md border border-emerald-300/35 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-50">
+      Data Privacy Guarantee: 100% Secure: All data processing is executed locally within your browser. Your data never leaves your device.
+    </section>
+
+    <div class="mb-6">
+      <section class="ad-slot min-h-[96px]" aria-label="Advertisement area top">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000001"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+    </div>
+
+    <main class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+      <section class="rounded-md border bg-stone-950/72 border-stone-700/70 p-4 shadow-2xl shadow-black/20 sm:p-6">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h2 class="text-xl font-extrabold text-white">Workspace</h2>
+            <p class="mt-1 text-sm leading-6 text-slate-400">Enter your data, run the tool, and copy the result. The execution script is embedded in this page.</p>
+          </div>
+          <div class="rounded-md border bg-rose-400/10 border-rose-300/30 text-rose-100 px-3 py-2 text-xs font-semibold">
+            Pure browser execution
+          </div>
+        </div>
+
+        <div class="mt-6">
+
+          <div class="space-y-4">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium text-slate-200">JWT token</span>
+              <textarea id="jwtInput" rows="8" class="field font-mono text-sm" placeholder="Paste a JWT here. Decoding happens locally only."></textarea>
+            </label>
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="flex items-center gap-3 rounded-md border border-slate-700/70 bg-slate-900/60 px-4 py-3 text-sm text-slate-200">
+                <input id="strictInput" type="checkbox" checked class="h-4 w-4 rounded border-slate-500 bg-slate-900" />
+                Require exactly three JWT segments
+              </label>
+              <label class="flex items-center gap-3 rounded-md border border-slate-700/70 bg-slate-900/60 px-4 py-3 text-sm text-slate-200">
+                <input id="timeInput" type="checkbox" checked class="h-4 w-4 rounded border-slate-500 bg-slate-900" />
+                Interpret exp / nbf / iat timestamps
+              </label>
+            </div>
+          </div>
+        
+        </div>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button id="primaryAction" type="button" class="min-h-[48px] rounded-md bg-gradient-to-r from-rose-300 to-amber-200 text-stone-950 px-5 py-3 text-sm font-black shadow-lg shadow-black/20 transition hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-white/20">
+            Decode JWT
+          </button>
+          <button id="resetButton" type="button" class="secondary-button">Reset sample</button>
+          <p id="statusText" class="text-sm text-slate-400" role="status" aria-live="polite">Ready for local processing.</p>
+        </div>
+
+        <div id="loadingPanel" class="mt-5 hidden rounded-md border border-slate-700/70 bg-slate-950/70 p-5" aria-live="polite">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div class="loading-orbit" aria-hidden="true"></div>
+            <div>
+              <div class="font-bold text-white">Processing locally</div>
+              <p class="mt-1 text-sm leading-6 text-slate-400">The browser is computing the result. No input is uploaded or stored externally.</p>
+            </div>
+          </div>
+          <canvas id="loadingCanvasArt" class="mt-4 h-20 w-full rounded-md border border-slate-800 bg-slate-950/70" width="960" height="120" aria-hidden="true"></canvas>
+        </div>
+
+        <section class="mt-6 rounded-md border border-slate-700/70 bg-slate-950/55 p-4">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-extrabold text-white">Result</h2>
+              <p class="mt-1 text-sm text-slate-400">Structured output is ready to inspect and copy.</p>
+            </div>
+            <button id="copyResultButton" type="button" class="secondary-button">Copy result</button>
+          </div>
+          <div id="errorPanel" class="mt-4 hidden rounded-md border border-rose-400/40 bg-rose-500/10 p-3 text-sm text-rose-100"></div>
+          <div id="resultPanel" class="mt-4">
+
+          <div class="grid gap-4 lg:grid-cols-2">
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Header</h3>
+              <pre id="jwtHeaderOutput" class="result-pre mt-3"></pre>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Payload</h3>
+              <pre id="jwtPayloadOutput" class="result-pre mt-3"></pre>
+            </div>
+          </div>
+          <div class="mt-5">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Security Notes</h3>
+            <div id="jwtWarningsOutput" class="mt-3 space-y-2"></div>
+          </div>
+        
+          </div>
+        </section>
+      </section>
+
+      <aside class="space-y-6">
+        <section class="rounded-md border bg-stone-950/72 border-stone-700/70 p-4">
+          <h2 class="text-base font-extrabold text-white">Tool Notes</h2>
+          <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+            <li>Runs with native ES6+ browser logic.</li>
+            <li>No account, no upload, no server-side storage.</li>
+            <li>Designed for fast intent completion and clear outputs.</li>
+          </ul>
+        </section>
+        <section class="ad-slot min-h-[280px]" aria-label="Advertisement area side">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000002"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+      </aside>
+    </main>
+
+    <section class="mt-6 grid gap-3 md:grid-cols-2">
+      <details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Why is alg=none flagged?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Unsigned tokens are dangerous in most production systems because they can bypass expected verification flows.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">What is Pure Client-Side JWT Security Debugger?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Pure Client-Side JWT Security Debugger is a focused browser-based utility built for fast, private, task-oriented workflows.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Does it work offline?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">After the first load, the core JavaScript logic is self-contained. CDN styling and ads require network access.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Can I use the result commercially?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Yes. The generated output is meant for everyday operational use, but you should verify critical legal, tax, and security decisions with a qualified professional.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Is this tool private?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">Yes. All calculations run in your browser. The page does not upload your inputs to a server.</p>
+            </details>
+<details class="rounded-md border border-slate-700/70 bg-slate-900/45 p-4">
+              <summary class="cursor-pointer text-sm font-semibold text-slate-100">Does this verify a JWT signature?</summary>
+              <p class="mt-3 text-sm leading-6 text-slate-300">No. This client-side debugger decodes and inspects token claims. Signature verification requires the correct key material.</p>
+            </details>
+    </section>
+
+    <div class="mt-6">
+      <section class="ad-slot min-h-[120px]" aria-label="Advertisement area bottom">
+          <span class="ad-label">Advertisement</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+               data-ad-slot="0000000003"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </section>
+    </div>
+
+    <footer class="py-8 text-center text-xs text-slate-500">
+      <span>Pure Client-Side JWT Security Debugger</span>
+      <span class="mx-2">·</span>
+      <span>Static single-page utility</span>
+      <span class="mx-2">·</span>
+      <span>Created 2026-05-17T08:37:34+00:00</span>
+    </footer>
+  </div>
+
+  <script id="tool-script" data-primary-script="true">
+  "use strict";
+  (function () {
+    const ADSENSE_CLIENT = "ca-pub-xxxxxxxxxxxxxxxx";
+    const PLACEHOLDER_ADS = ADSENSE_CLIENT.includes("xxxxxxxx");
+    const $ = (id) => document.getElementById(id);
+    const statusText = $("statusText");
+    const errorPanel = $("errorPanel");
+    const loadingPanel = $("loadingPanel");
+    const loadingCanvas = $("loadingCanvasArt");
+    const uxDelayMs = Number(document.body.dataset.uxDelay || "0");
+
+    window.addEventListener("error", function (event) {
+      const target = event.target;
+      if (target && target.tagName === "SCRIPT" && String(target.src || "").includes("cdn.tailwindcss.com")) {
+        document.documentElement.classList.add("cdn-fallback");
+        showError("Tailwind CDN did not load. The tool still works with fallback styles.");
+      }
+    }, true);
+
+    function showError(message) {
+      if (!errorPanel) return;
+      errorPanel.textContent = message;
+      errorPanel.classList.remove("hidden");
+    }
+
+    function clearError() {
+      if (!errorPanel) return;
+      errorPanel.textContent = "";
+      errorPanel.classList.add("hidden");
+    }
+
+    function setStatus(message) {
+      if (statusText) statusText.textContent = message;
+    }
+
+    function sleep(ms) {
+      return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    function drawLoadingCanvas() {
+      if (!loadingCanvas) return;
+      const ctx = loadingCanvas.getContext("2d");
+      if (!ctx) return;
+      const width = loadingCanvas.width;
+      const height = loadingCanvas.height;
+      const now = Date.now() / 800;
+      ctx.clearRect(0, 0, width, height);
+      const gradient = ctx.createLinearGradient(0, 0, width, 0);
+      gradient.addColorStop(0, "rgba(15,23,42,0.9)");
+      gradient.addColorStop(0.5, "rgba(30,41,59,0.95)");
+      gradient.addColorStop(1, "rgba(15,23,42,0.9)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+      for (let i = 0; i < 42; i += 1) {
+        const x = (i * 73 + now * 90) % width;
+        const y = 20 + Math.sin(i + now) * 24 + height / 2;
+        ctx.fillStyle = i % 3 === 0 ? "#fb7185" : "rgba(148,163,184,0.45)";
+        ctx.beginPath();
+        ctx.arc(x, y, 2 + (i % 5), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = "rgba(226,232,240,0.82)";
+      ctx.font = "600 18px ui-sans-serif, system-ui";
+      ctx.fillText("Local computation in progress", 24, 42);
+      ctx.font = "14px ui-sans-serif, system-ui";
+      ctx.fillStyle = "rgba(148,163,184,0.9)";
+      ctx.fillText("No network request is made with your input.", 24, 70);
+    }
+
+    async function runWithLoading(worker) {
+      clearError();
+      if (loadingPanel) loadingPanel.classList.remove("hidden");
+      setStatus("Processing locally...");
+      drawLoadingCanvas();
+      const started = performance.now();
+      try {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        const value = await worker();
+        const elapsed = performance.now() - started;
+        const remaining = Math.max(0, uxDelayMs - elapsed);
+        if (remaining > 0) await sleep(remaining);
+        setStatus("Done. Result generated locally.");
+        return value;
+      } catch (error) {
+        const message = error && error.message ? error.message : String(error);
+        showError(message);
+        setStatus("Please fix the input and try again.");
+        throw error;
+      } finally {
+        if (loadingPanel) loadingPanel.classList.add("hidden");
+      }
+    }
+
+    function initAds() {
+      if (PLACEHOLDER_ADS) return;
+      const ads = document.querySelectorAll("ins.adsbygoogle");
+      for (const ad of ads) {
+        if (ad.dataset.initialized === "true") continue;
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          ad.dataset.initialized = "true";
+        } catch (error) {
+          console.warn("AdSense initialization skipped:", error);
+        }
+      }
+    }
+
+    function metric(label, value, detail) {
+      return `<div class="metric-card"><div class="metric-label">${escapeHtml(label)}</div><div class="metric-value">${escapeHtml(value)}</div><div class="mt-2 text-sm leading-5 text-slate-400">${escapeHtml(detail || "")}</div></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      const temp = document.createElement("textarea");
+      temp.value = text;
+      temp.style.position = "fixed";
+      temp.style.left = "-9999px";
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      temp.remove();
+      return Promise.resolve();
+    }
+
+    function collectResultText() {
+      const panel = $("resultPanel");
+      return panel ? panel.innerText.trim() : "";
+    }
+
+    window.toolkit = {
+      $,
+      runWithLoading,
+      metric,
+      escapeHtml,
+      copyText,
+      collectResultText,
+      setStatus,
+      showError,
+      clearError
+    };
+
+
+    function setupTool() {
+      const { $, runWithLoading, metric, escapeHtml, setStatus } = window.toolkit;
+      const sampleJwt = [
+        btoa(JSON.stringify({ alg: "HS256", typ: "JWT" })).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", ""),
+        btoa(JSON.stringify({ sub: "1234567890", name: "Local Demo", iat: 1710000000, exp: Math.floor(Date.now() / 1000) + 3600 })).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", ""),
+        "signature-demo"
+      ].join(".");
+      function reset() {
+        $("jwtInput").value = sampleJwt;
+        $("strictInput").checked = true;
+        $("timeInput").checked = true;
+        decode();
+      }
+      function base64UrlDecode(segment) {
+        const normalized = segment.replaceAll("-", "+").replaceAll("_", "/");
+        const padded = normalized + "=".repeat((4 - normalized.length % 4) % 4);
+        const binary = atob(padded);
+        const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+      }
+      function parseJsonSegment(segment, label) {
+        try {
+          return JSON.parse(base64UrlDecode(segment));
+        } catch (error) {
+          throw new Error(`${label} is not valid base64url JSON.`);
+        }
+      }
+      function formatClaims(payload) {
+        const clone = { ...payload };
+        ["exp", "nbf", "iat"].forEach(key => {
+          if (typeof clone[key] === "number") {
+            clone[`${key}_iso`] = new Date(clone[key] * 1000).toISOString();
+          }
+        });
+        return clone;
+      }
+      function warning(label, detail, level) {
+        const color = level === "high" ? "border-rose-400/40 bg-rose-500/10 text-rose-100" : level === "medium" ? "border-amber-300/40 bg-amber-400/10 text-amber-100" : "border-slate-600 bg-slate-900/60 text-slate-200";
+        return `<div class="rounded-md border ${color} p-3"><div class="font-bold">${escapeHtml(label)}</div><div class="mt-1 text-sm leading-6">${escapeHtml(detail)}</div></div>`;
+      }
+      function analyzeWarnings(header, payload, signature) {
+        const notes = [];
+        if (!signature || signature === "signature-demo") notes.push(warning("Signature not verified", "This tool decodes tokens locally but does not validate cryptographic signatures.", "medium"));
+        if (String(header.alg || "").toLowerCase() === "none") notes.push(warning("alg=none", "Unsigned JWTs are unsafe for most production authorization flows.", "high"));
+        if (!payload.exp) notes.push(warning("Missing exp", "Tokens without expiration can remain valid longer than intended.", "medium"));
+        if (payload.exp && Date.now() / 1000 > Number(payload.exp)) notes.push(warning("Expired token", "The exp claim is in the past.", "high"));
+        if (payload.nbf && Date.now() / 1000 < Number(payload.nbf)) notes.push(warning("Not active yet", "The nbf claim is in the future.", "medium"));
+        if (!notes.length) notes.push(warning("No obvious claim warning", "No basic claim issue was detected. This is not a security guarantee.", "low"));
+        return notes.join("");
+      }
+      function decode() {
+        return runWithLoading(() => {
+          const token = $("jwtInput").value.trim();
+          if (!token) throw new Error("Paste a JWT before decoding.");
+          const parts = token.split(".");
+          if ($("strictInput").checked && parts.length !== 3) throw new Error("A strict JWT must contain exactly three dot-separated segments.");
+          if (parts.length < 2) throw new Error("JWT needs at least header and payload segments.");
+          const header = parseJsonSegment(parts[0], "Header");
+          const payload = parseJsonSegment(parts[1], "Payload");
+          const payloadOutput = $("timeInput").checked ? formatClaims(payload) : payload;
+          $("jwtHeaderOutput").textContent = JSON.stringify(header, null, 2);
+          $("jwtPayloadOutput").textContent = JSON.stringify(payloadOutput, null, 2);
+          $("jwtWarningsOutput").innerHTML = analyzeWarnings(header, payload, parts[2]);
+        });
+      }
+      $("primaryAction").addEventListener("click", decode);
+      $("resetButton").addEventListener("click", reset);
+      $("jwtInput").addEventListener("input", () => setStatus("Token changed. Decode again to refresh."));
+      reset();
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initAds();
+      if (typeof window.setupTool === "function") {
+        window.setupTool();
+      }
+      const copyButton = $("copyResultButton");
+      if (copyButton) {
+        copyButton.addEventListener("click", function () {
+          copyText(collectResultText()).then(() => setStatus("Result copied."));
+        });
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
