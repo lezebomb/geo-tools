@@ -1,13 +1,116 @@
 <!doctype html>
 <html lang="en" class="h-full">
 <head>
+  <script id="passive-listener-guard">
+    (function () {
+      "use strict";
+      var passiveEvents = { scroll: true, wheel: true, touchstart: true, touchmove: true };
+      var nativeAddEventListener = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function (type, listener, options) {
+        if (passiveEvents[type]) {
+          if (options === undefined) {
+            options = { passive: true };
+          } else if (typeof options === "boolean") {
+            options = { capture: options, passive: true };
+          } else if (options && typeof options === "object" && options.passive === undefined) {
+            options = Object.assign({}, options, { passive: true });
+          }
+        }
+        return nativeAddEventListener.call(this, type, listener, options);
+      };
+    })();
+  </script>
+  <script id="global-error-boundary">
+    (function () {
+      "use strict";
+      var hasShownNotice = false;
+      function showRuntimeNotice(message) {
+        if (hasShownNotice) return;
+        hasShownNotice = true;
+        var render = function () {
+          if (document.getElementById("runtime-error-notice")) return;
+          var notice = document.createElement("div");
+          notice.id = "runtime-error-notice";
+          notice.setAttribute("role", "status");
+          notice.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;padding:12px 14px;border:1px solid rgba(251,113,133,.45);border-radius:8px;background:rgba(15,23,42,.96);color:#ffe4e6;font:600 13px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;box-shadow:0 18px 60px rgba(0,0,0,.32)";
+          notice.textContent = message || "A runtime module recovered from an error. Reload if this panel stays visible.";
+          document.body.appendChild(notice);
+        };
+        if (document.body) render();
+        else document.addEventListener("DOMContentLoaded", render, { once: true });
+      }
+      window.onerror = function (message, source, line, column, error) {
+        console.warn("Recovered runtime error:", message, source, line, column, error);
+        showRuntimeNotice("A runtime module recovered from an error. The page is still available.");
+        return false;
+      };
+      window.addEventListener("unhandledrejection", function (event) {
+        console.warn("Recovered unhandled promise rejection:", event.reason);
+        showRuntimeNotice("A background task recovered from an error. The page is still available.");
+      });
+    })();
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tools.lezebomb.top/",
+      "url": "https://tools.lezebomb.top/",
+      "name": "GEO Tools Array | Developer Utility Hub",
+      "description": "A static array of privacy-first client-side developer and commerce utility tools."
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://tools.lezebomb.top/",
+      "url": "https://tools.lezebomb.top/",
+      "name": "GEO Tools Array",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Cron Expression Visualizer and Explainer | Free Client-Side Utility",
+          "url": "https://tools.lezebomb.top/cron-expression-interactive-visualizer-and-explainer/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cross-Border E-commerce Profit Margin Calculator | Free Client-Side Utility",
+          "url": "https://tools.lezebomb.top/cross-border-e-commerce-stamp-duty-profit-margin-calculator/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CSS Glassmorphism Code Generator | Free Client-Side Utility",
+          "url": "https://tools.lezebomb.top/css-glassmorphism-ui-code-generator-with-live-canvas/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Pure Client-Side JWT Security Debugger | Free Client-Side Utility",
+          "url": "https://tools.lezebomb.top/pure-client-side-jwt-json-web-token-security-debugger/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "TikTok and Xiaohongshu Character Counter | Free Client-Side Utility",
+          "url": "https://tools.lezebomb.top/tiktok-xiaohongshu-character-and-hashtag-counter-with-copy-wizar/index.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GEO Tools Array | Developer Utility Hub</title>
   <meta name="description" content="A static array of privacy-first client-side developer and commerce utility tools." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="theme-color" content="#10b981" />
+      <meta property="og:url" content="https://tools.lezebomb.top/" />
+<link rel="canonical" href="https://tools.lezebomb.top/" />
+<meta name="theme-color" content="#10b981" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
